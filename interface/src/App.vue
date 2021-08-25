@@ -42,6 +42,10 @@ export default {
       let date_2 = document.getElementById("inp_date2").value
       let url = 'http://127.0.0.1:8000/method_b/' + code + '/' + date_1 + '/' + date_2 + '/'
       axios.get('http://127.0.0.1:8000/method_b/' + code + '/' + date_1 + '/' + date_2 + '/').then(response => {
+        if (response.data === "Request error") {
+          alert("Некорректный запрос")
+          return
+        }
         this.diff = response.data;
       })
     }
